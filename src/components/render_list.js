@@ -4,20 +4,21 @@ import {Link} from 'react-router';
 import _ from 'lodash';
 
 export default (props) =>{
-var {data} = props.data;
- if (data.loading) {
+ if (props.view.data.loading) {
       return (
       <div className="loader"/>
       )
     }
 
-    if (data.error) {
-      console.log(data.error)
+    if (props.view.data.error) {
+      console.log(props.data.data.error)
       return (<div>An unexpected error occurred</div>)
     }
+// Type depended on site needed to read data from other requests
+var dataWithType = `props.view.data.${props.type}`;
 
 // Delete duplicates and make an array with max 3 object's arrays to map with row
-var uni = _.uniqBy(data.tileset, 'title');
+var uni = _.uniqBy(eval(dataWithType), 'title');
 var sampled = _.chunk(uni, 3);
 
 
@@ -27,13 +28,15 @@ var sampled = _.chunk(uni, 3);
        <Grid>
            
                {sampled.map(arr => 
-               <Row key={arr[0].title}>
-                  { arr.map(data =>
-                  <Col sm={6} md={4} key={data.title} >
-<div className="animate-bottom">
-                      <Link to={"/"+ data.url.replace(/\//g,"===")}>
-            <div className='tile' style={{backgroundImage : `url(${data.img.url})`}} />
-            <h4>{data.title}</h4>
+               <Row key={arr[0].title} className="row-eq-height">
+                  { arr.map(single =>
+                  <Col sm={6} md={4} key={single.title} >
+<div className="animate-bottom divWrapper" >
+                      <Link to={"/wszystkie/"+ single.url.replace(/\//g,"===")}>
+            <div className='tile' style={{backgroundImage : `url(${single.img.url})`}} />
+            <div className="title">
+            <h4>{single.title}</h4>
+            </div>
               </Link>
               </div>
             </Col>

@@ -1,5 +1,4 @@
-import React from 'react';
-import {gql, graphql} from 'react-apollo';
+import {gql} from 'react-apollo';
 
 
 export function  fetchAll() { 
@@ -26,7 +25,7 @@ export function  fetchCategory(fetchData) {
     return(
     gql`
   query Query{
-          article(service:[${fetchData}], t:[Article]) {
+          articles(service:[${fetchData}], t:[Article]) {
                   id,
                   title,
                   url,

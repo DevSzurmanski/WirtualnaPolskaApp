@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
-import {Navbar, MenuItem, NavItem, NavDropdown, Nav} from 'react-bootstrap';
+import React from 'react';
+import {Navbar, NavItem, Nav} from 'react-bootstrap';
 import {LinkContainer, IndexLinkContainer} from 'react-router-bootstrap';
-
-var Nave = () =>{
-
- 
+// Nav and Navbar are already used
+var Navv = () =>{
         return (
-
         <Navbar inverse collapseOnSelect>
     <Navbar.Header>
       <Navbar.Brand>
@@ -43,4 +40,4 @@ var Nave = () =>{
         );
     
 };
-export default Nave;
+export default Navv;

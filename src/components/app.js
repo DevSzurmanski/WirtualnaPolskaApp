@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Nav from './nav';
-import All from '../containers/all';
-import Tech from '../containers/tech';
 
 const App = (props) => {
 

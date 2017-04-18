@@ -3,7 +3,8 @@ import {Link, withRouter} from 'react-router';
 import {Button} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import {gql, graphql} from 'react-apollo';
-import {Grid, Row, Col, Clearfix} from 'react-bootstrap';
+import {Grid, Row, Col} from 'react-bootstrap';
+
 
 class AllPost extends Component{
       static contextTypes = {
@@ -21,7 +22,13 @@ if(this.props.data.error){
 return(
     <div> Error</div>
 )}
-var {article} = this.props.data;
+// Article validator - api sometimes responds with empty array
+var art="";
+if(this.props.data.article.body[0]){
+      art = this.props.data.article.body[0].data;
+} else{
+     art="Api nie zwróciło treści artykułu. Aby się z nim zapoznać skorzystaj z przycisku z odnośnikiem do strony z artykułem"
+    }
 return (
         <Grid>
             <div className="animate-bottom">
@@ -29,17 +36,18 @@ return (
     <Link to="/">
 <Button bsStyle="primary">Wróć</Button>
 </Link>
-<a href={article.url}>
+<a href={this.props.data.article.url}>
 <Button bsStyle="success">Link do artykułu</Button>
 </a>
 </Row>
 <Row className="image">
-<img src={article.img.url} />
+<img src={this.props.data.article.img.url} alt={this.props.data.article.title}/>
 </Row>
 <Row>
 <Col xs={10} xsOffset={1} sm={10} smOffset={1} md={10} mdOffset={1}>
-<h1>{article.title}</h1>
-<h3>{article.body[0].data}</h3>
+<h1>{this.props.data.article.title}</h1>
+{console.log(this.props.data.article)}
+<h3>{art}</h3>
 </Col>
 </Row>
 </div>
@@ -47,8 +55,6 @@ return (
 );
 }
 }
-
-
 
 const fetchPost = gql`
   query Query($id: String!){
@@ -64,6 +70,8 @@ const fetchPost = gql`
           }
         }
  `;
+
+
  const AllPostFetched = graphql(fetchPost, {
      options: (ownProps) => (
       

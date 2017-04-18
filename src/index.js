@@ -7,6 +7,8 @@ import App from './components/app';
 import All from './containers/all';
 import Allpost from './containers/all_post';
 import Tech from './containers/tech';
+import Gwiazdy from './containers/gwiazdy';
+import Wiadomosci from './containers/wiadomosci';
 
 import './index.css';
 
@@ -21,8 +23,10 @@ ReactDOM.render((
     
         <Route path="/" component={App}> 
         <IndexRoute component={All}/>
-        <Route exact path="/:id" component={Allpost}/>
+        <Route path="/wszystkie/:id" component={Allpost}/>
         <Route path="tech" component={Tech}/> 
+        <Route path="gwiazdy" component={Gwiazdy}/> 
+        <Route path="wiadomosci" component={Wiadomosci}/> 
         </Route>
       
     </Router>
