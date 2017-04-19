@@ -8,9 +8,11 @@ import RenderedList from '../components/render_list';
 class Wiadomosci extends Component {
 
   static propTypes = {
-    data: PropTypes
-      .shape({loading: PropTypes.bool, error: PropTypes.object, articles: PropTypes.array})
-      .isRequired
+    data: PropTypes.shape({
+      loading: PropTypes.bool, 
+      error: PropTypes.object, 
+      articles: PropTypes.array
+    }).isRequired
   };
 
   render() {

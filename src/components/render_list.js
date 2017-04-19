@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Row, Col} from 'react-bootstrap';
+import {Grid, Col} from 'react-bootstrap';
 import {Link} from 'react-router';
 import _ from 'lodash';
 
@@ -56,7 +56,7 @@ export default(props) => {
       <Grid>
         <div className="isError">{isError}</div>
         {sampled.map(arr => 
-          <Row key={arr[0].title} className="row-eq-height">
+          <div key={arr[0].title}>
           {arr.map(single => 
             <Col sm={6} md={4} key={single.title}>
             <div className="animate-bottom divWrapper">
@@ -69,7 +69,7 @@ export default(props) => {
             </div>
           </Col>
           )}
-        </Row>
+        </div>
         )}
       </Grid>
     </div>

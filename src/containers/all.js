@@ -8,9 +8,11 @@ import RenderList from '../components/render_list';
 class All extends Component {
 
   static propTypes = {
-    data: PropTypes
-      .shape({loading: PropTypes.bool, error: PropTypes.object, tileset: PropTypes.array})
-      .isRequired
+    data: PropTypes.shape({
+      loading: PropTypes.bool, 
+      error: PropTypes.object, 
+      tileset: PropTypes.array
+    }).isRequired
   };
 
   render() {

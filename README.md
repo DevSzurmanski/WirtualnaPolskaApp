@@ -19,6 +19,7 @@ Temporary I use the proxy `https://cors-anywhere.herokuapp.com/` so you dont't n
 
 - Sometimes API respond with an empty array, where should be contests of the article. When that happen you'll see an information about it. 
 - Sometimes API does other unexpected things probably depended on lunar phases, but almost all of them app treats like a network error. It displays a static data.
+- React-bootstrap had some troubles with RWD. Changed `Row` with a div works better for lists.
 
 ## To-Do
 
