@@ -5,7 +5,7 @@ import { ApolloProvider} from 'react-apollo';
 import ApolloClient, { createNetworkInterface} from 'apollo-client';
 import App from './components/app';
 import All from './containers/all';
-import Allpost from './containers/all_post';
+import Post from './containers/post';
 import Tech from './containers/tech';
 import Gwiazdy from './containers/gwiazdy';
 import Wiadomosci from './containers/wiadomosci';
@@ -20,15 +20,13 @@ const client = new ApolloClient({
 ReactDOM.render((
   <ApolloProvider client={client}>
     <Router history={browserHistory}>
-    
         <Route path="/" component={App}> 
         <IndexRoute component={All}/>
-        <Route path="/wszystkie/:id" component={Allpost}/>
+        <Route path="/posts/:id" component={Post}/>
         <Route path="tech" component={Tech}/> 
         <Route path="gwiazdy" component={Gwiazdy}/> 
         <Route path="wiadomosci" component={Wiadomosci}/> 
         </Route>
-      
     </Router>
 </ApolloProvider>), 
   document.getElementById('root'));

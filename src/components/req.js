@@ -40,3 +40,20 @@ export function  fetchCategory(fetchData) {
         }
  `)
 }
+export function fetchPost(){
+  return( gql`
+  query Query($id: String!){
+          article(url:$id){
+              title,
+              body(t: Plain){
+                  data
+              },
+              img{
+                  url
+              },
+              url
+          }
+        }
+ `
+  )
+}

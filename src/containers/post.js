@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import {Link, withRouter} from 'react-router';
+import {withRouter} from 'react-router';
 import {Button} from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import {gql, graphql} from 'react-apollo';
+import {graphql} from 'react-apollo';
 import {Grid, Row, Col} from 'react-bootstrap';
+import {fetchPost} from '../components/req'
+import {browserHistory} from 'react-router';
 
 
 class AllPost extends Component{
@@ -22,7 +24,7 @@ if(this.props.data.error){
 return(
     <div> Error</div>
 )}
-// Article validator - api sometimes responds with empty array
+// Article validator - api sometimes responds with an empty array
 var art="";
 if(this.props.data.article.body[0]){
       art = this.props.data.article.body[0].data;
@@ -33,9 +35,9 @@ return (
         <Grid>
             <div className="animate-bottom">
         <Row>
-    <Link to="/">
-<Button bsStyle="primary">Wróć</Button>
-</Link>
+    {/*<RelativeLink to="../sideways">*/}
+<Button bsStyle="primary" onClick={browserHistory.goBack}>Wróć</Button>
+{/*</RelativeLink>*/}
 <a href={this.props.data.article.url}>
 <Button bsStyle="success">Link do artykułu</Button>
 </a>
@@ -56,28 +58,15 @@ return (
 }
 }
 
-const fetchPost = gql`
-  query Query($id: String!){
-          article(url:$id){
-              title,
-              body(t: Plain){
-                  data
-              },
-              img{
-                  url
-              },
-              url
-          }
-        }
- `;
 
 
- const AllPostFetched = graphql(fetchPost, {
+
+ const AllPostFetched = graphql(fetchPost(), {
      options: (ownProps) => (
       
          {
 variables: {
-    id: `"${ownProps.params.id.replace(/===/g,"/")}"`
+    id: ownProps.params.id.replace(/===/g,"/")
 }
      })
  })(withRouter(AllPost));

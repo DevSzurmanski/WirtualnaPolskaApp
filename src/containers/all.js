@@ -3,7 +3,7 @@ import {graphql} from 'react-apollo';
 import PropTypes from 'prop-types';
 
 import {fetchAll} from '../components/req';
-import RenderedList from '../components/render_list';
+import RenderList from '../components/render_list';
 class All extends Component{
 
 static propTypes = {
@@ -16,7 +16,7 @@ static propTypes = {
 
   render () {
     return(
-   <RenderedList view={this.props} type="tileset" />
+   <RenderList view={this.props} type="tileset" />
     )
 }
 }

@@ -32,7 +32,7 @@ var sampled = _.chunk(uni, 3);
                   { arr.map(single =>
                   <Col sm={6} md={4} key={single.title} >
 <div className="animate-bottom divWrapper" >
-                      <Link to={"/wszystkie/"+ single.url.replace(/\//g,"===")}>
+                      <Link to={"/posts/"+ single.url.replace(/\//g,"===")}>
             <div className='tile' style={{backgroundImage : `url(${single.img.url})`}} />
             <div className="title">
             <h4>{single.title}</h4>
