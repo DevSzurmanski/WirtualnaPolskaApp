@@ -13,17 +13,15 @@ React-Apollo stack.
 
 ## More about CORS
 
-In this project I used WP's API in frontend and I had some issues with CORS. You can easy use a plugin to your browser or manually enable it and it will work. I will repair it soon, but I didn't want to use backend or proxies, so right now it works only with enabled CORS in the browser.
+Temporary I use the proxy `https://cors-anywhere.herokuapp.com/` so you dont't need to make some changes in your browser. It's not safe and it's slower than just make a change in your browser, but it's the easiest way to handle that. If I have enough time, I'll make my own proxy in node.
 
 ## Errors
 
-Sometime API respond with an empty array, where should be contests of the article. When that happen you'll see an information about it. 
+- Sometimes API respond with an empty array, where should be contests of the article. When that happen you'll see an information about it. 
+- Sometimes API does other unexpected things probably depended on lunar phases, but almost all of them app treats like a network error. It displays a static data.
 
 ## To-Do
 
-- Refactor
-- Change some junky code like evals
-- Beautify
-- Make some magic with CORS
-- Offline data
+- Make a CORS proxy
 - Weather
+- Tests

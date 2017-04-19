@@ -4,26 +4,19 @@ import PropTypes from 'prop-types';
 
 import {fetchCategory} from '../components/req';
 import RenderedList from '../components/render_list';
-class Gwiazdy extends Component{
 
-static propTypes = {
-    data: PropTypes.shape({
-      loading: PropTypes.bool,
-      error: PropTypes.object,
-      articles: PropTypes.array,
-    }).isRequired,
-  } 
+class Gwiazdy extends Component {
 
-  render () {
-    return(
-   <RenderedList view={this.props} type={"articles"}/>
-    )
-}
-}
+  static propTypes = {
+    data: PropTypes
+      .shape({loading: PropTypes.bool, error: PropTypes.object, articles: PropTypes.array})
+      .isRequired
+  };
 
+  render() {
+    return (<RenderedList view={this.props} forStatic={"gwiazdy"}/>)
+  };
+};
 
-
-    
- 
- const GwiazdyWithData = graphql(fetchCategory("Gwiazdy"))(Gwiazdy);
- export default GwiazdyWithData;
+const GwiazdyWithData = graphql(fetchCategory("Gwiazdy"))(Gwiazdy);
+export default GwiazdyWithData;

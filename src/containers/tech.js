@@ -4,26 +4,19 @@ import PropTypes from 'prop-types';
 
 import {fetchCategory} from '../components/req';
 import RenderedList from '../components/render_list';
-class Tech extends Component{
 
-static propTypes = {
-    data: PropTypes.shape({
-      loading: PropTypes.bool,
-      error: PropTypes.object,
-      articles: PropTypes.array,
-    }).isRequired,
-  } 
+class Tech extends Component {
 
-  render () {
-    return(
-   <RenderedList view={this.props} type={"articles"}/>
-    )
-}
-}
+  static propTypes = {
+    data: PropTypes
+      .shape({loading: PropTypes.bool, error: PropTypes.object, articles: PropTypes.array})
+      .isRequired
+  };
 
+  render() {
+    return (<RenderedList view={this.props} forStatic={"tech"}/>)
+  };
+};
 
-
-    
- 
- const TechWithData = graphql(fetchCategory("Tech"))(Tech);
- export default TechWithData;
+const TechWithData = graphql(fetchCategory("Tech"))(Tech);
+export default TechWithData;

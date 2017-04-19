@@ -1,47 +1,37 @@
 import {gql} from 'react-apollo';
 
-
-export function  fetchAll() { 
-    return(
-    gql`
+// Fetch "wszystkie"
+export function fetchAll() {
+    return (gql `
   query Query{
           tileset(t:[Article]) {
-                  id,
                   title,
                   url,
                   img{
                       url
-                    },
-                  body(t:[Plain]) {
-                     data,
-      
-              }
+                    }
             }
         }
  `)
-}
-export function  fetchCategory(fetchData) { 
-   
-    return(
-    gql`
+};
+// Fetch "tech, gwiazdy, wiadomosci"
+export function fetchCategory(fetchData) {
+
+    return (gql `
   query Query{
           articles(service:[${fetchData}], t:[Article]) {
-                  id,
                   title,
                   url,
                   img{
                       url
-                    },
-                  body(t:[Plain]) {
-                     data,
-      
-              }
+                    }
             }
         }
  `)
-}
-export function fetchPost(){
-  return( gql`
+};
+// Fetch single article
+export function fetchPost() {
+    return (gql `
   query Query($id: String!){
           article(url:$id){
               title,
@@ -54,6 +44,5 @@ export function fetchPost(){
               url
           }
         }
- `
-  )
-}
+ `)
+};
